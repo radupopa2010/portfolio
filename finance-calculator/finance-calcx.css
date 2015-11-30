@@ -1,0 +1,195 @@
+
+body {
+	background: #EDEDE1;
+	font-size:12px;
+	padding: 3em 1em 0;
+	
+}
+.MAINBODY {
+	background: #EDEDE1;
+}
+
+#txnPageBoxes .tdb-content {
+	margin: 0.25em 0;
+	padding: 0;
+	width: 100%;
+	background: #f4f4ec;
+	position: relative;
+}
+
+#txnPageBoxes .tdp-panel {
+	margin: 0;
+	box-sizing: border-box;
+	background: #f7f7f7;
+	border: 0.09em solid #a5b5c6;
+	padding: 2em 2em 0 2em;
+	position: relative;
+	
+}
+
+
+.VIEWBOXCAPTION, label {
+	color: #6795c3;
+	font-family: Tahoma,Arial;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+
+.lblInputCover {
+	cursor: text;
+}
+#txnPageBoxes .tdp-panel label {
+	display: block;
+	margin: 0.25em 0 0.3em 0em;
+}
+#txnPageBoxes .tdp-panel span.lblInputCover {
+	position: absolute;
+	padding: 0.475em 0 0 0.5em;
+	font-weight: normal;
+}
+.EDIT {
+	background: white;
+	color: black;
+	font-family: Tahoma,Arial;
+	font-size: 1.25em;
+}11
+
+#txnPageBoxes .tdp-panel input {
+	margin: 0 0 0.5em 1em;
+	width: 9.25em;
+	font-size: 1.3em;
+}
+#txnPageBoxes .tdp-panel input.inpLabelCovered {
+	text-align: right;
+}
+#txnPageBoxes .tdp-panel select {
+	margin: 0 0 0.5em 0.25em;
+	width: 13.45em;
+	font-size: 1.18em;
+}
+.tpbCoLetter#txnPageBoxes #oppo_monthlypayment {
+	background-color: rgb(230, 255, 250);
+}
+.tpbCoLetter#txnPageBoxes #oppo_cl_totalamtdue {
+	text-align: right;
+}
+.taycor-links-txn-cl {
+	position: absolute;
+	width: 100%;
+}
+#txnPageBoxes .taycor-links-txn-cl {
+	position: absolute;
+	right: 0em;
+	top: 28em;
+	font-weight: bold;
+}
+.tpbCoLetter#txnPageBoxes .tdp-panel-cl-calc {
+	left: 20em;
+	top: 2.5em;
+	right: 2em;
+	padding-top: 0.6em;
+	padding-right: 1em;
+	padding-bottom: 1.4em;
+	padding-left: 1em;
+	border-top-color: #dadada;
+	border-right-color: #dadada;
+	border-bottom-color: #dadada;
+	border-left-color: #dadada;
+	border-top-width: 0.09em;
+	border-right-width: 0.09em;
+	border-bottom-width: 0.09em;
+	border-left-width: 0.09em;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	position: absolute;
+	background-image: none;
+	background-attachment: scroll;
+	background-repeat: repeat;
+	background-position-x:0%;
+	background-position-y: 0%;
+	background-color: rgb(238, 238, 238);
+}
+
+
+@media screen and (min-width: 550px) {
+	body{
+		font-size: 15px;
+	}
+}
+
+@media screen and (min-width: 650px) {
+	body{
+		font-size: 16px;
+	}
+}
+@media screen and (min-width: 750px) {
+	body{
+		font-size: 18px;
+	}
+}
+@media screen and (min-width: 850px) {
+	body{
+		font-size: 21px;
+	}
+}
+
+@media screen and (min-width: 950px) {
+	body{
+		font-size: 23px;
+	}
+}
+
+@media screen and (min-width: 1050px) {
+	body{
+		font-size: 25px;
+	}
+}
+
+@media screen and (min-width: 1150px) {
+	body{
+		font-size: 27px;
+	}
+}
+@media screen and (min-width: 1250px) {
+	body{
+		font-size: 29px;
+	}
+}
+@media screen and (min-width: 1350px) {
+	body{
+		font-size: 30px;
+	}
+}
+@media screen and (min-width: 1450px) {
+	body{
+		font-size: 31px;
+	}
+}
+@media screen and (min-width: 1550px) {
+	body{
+		font-size: 32px;
+	}
+}
+@media screen and (min-width: 1650px) {
+	body{
+		font-size: 33px;
+	}
+}
+@media screen and (min-width: 1750px) {
+	body{
+		font-size: 34px;
+	}
+}
+@media screen and (min-width: 1850px) {
+	body{
+		font-size: 35px;
+	}
+}
+@media screen and (min-width: 1950px) {
+	body{
+		font-size: 36px;
+	}
+}
