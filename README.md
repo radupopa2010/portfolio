@@ -1,2 +1,2 @@
 ##  Front End Related Projects
-* Build a "Finance Calculator" plug-in for existing CRM using HTML, CSS and JavaScript.
+* Build a _"Finance Calculator"_ plug-in for existing CRM using HTML, CSS and JavaScript.
