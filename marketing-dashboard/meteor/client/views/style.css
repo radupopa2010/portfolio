@@ -1,0 +1,96 @@
+
+/*
+	Taycor Marketing View CSS
+	(C) 2015 Taycor, LLC
+*/
+
+*{
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	margin: 0; padding: 0;
+	box-sizing: border-box;
+}
+
+html{
+	background: #EEE;
+	font-size: 16px;
+}
+
+body{
+	background: #FFF;
+	min-width: 720px;
+	font-family: sans-serif;
+	margin: 1em;
+	padding: 1em;
+}
+
+
+
+h2{
+	color:#068;
+	margin: 0em;
+	padding: 1.5em 0 0.4em;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+
+th{
+	color:#333;
+	font-weight: bold;
+	border-bottom: 1px solid #333;
+}
+th, td{
+  padding: 0.25em;
+  width: 20%;
+  white-space: pre;
+}
+
+
+tr:hover td{
+  background: #FFD;
+}
+
+
+#inpDateStart, #inpDateEnd{
+	font-size: 1.60em;
+	text-align: center;
+	padding: 0.3em 0 0.2em;
+}
+#inpDateEnd{
+  float: right;
+}
+
+
+
+
+
+
+
+.container{
+	background-color: black;
+	width: 60%;
+	color: white;
+}
+.all-tables{
+	width: 100%;
+}
+.marketing-table{
+
+}
+h2,td{
+	text-align: center;
+}
+
+
+.header2{
+	border-radius: 25px;
+	background-color: #339966;
+}
+
+
