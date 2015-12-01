@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<meta charset="utf-8">
+<title>Next 2 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<div class="container">
+	<div id="header">
+    <img src="images/HEAD-LHS.png" name="head_img_left" width="863" height="75" id="head_img_left"><img src="images/HEAD-RHS.png" name="header_img_right" width="560" height="75" id="header_img_right">
+  	</div> 
+	<div id="ui_finhub_one">
+    	<div class=ui_interior>
+			<img src="images/FINHUB-ONE.jpg" width="1158" height="399" align="absmiddle" id="ui_finhub_one_picture"> 
+		</div>
+    </div>
+	<div  id=ui_finhub_two >
+      <div class=ui_interior>
+         <div id="budget">
+              <h3> Budget Estimation</h3>
+               <p>Enter a monthly payment allotment on your new equipment acquisition to receive a purchase budget analysis.
+               </p>
+                <form action="http://equipmentleasing.org/taycor-financial/" method="post" >
+				<input type="hidden" name="inpQuoteType" value="budget-calc" />	
+                 	<input type="text" name="inpAmt" size="28"  placeholder="MONTHLY BUDGET"/>
+					<br/>
+               		<input type="text" name="inpEmail" size="28"  placeholder="EMAIL ADDRESS"/>
+                    <br>
+                    <br>
+                    <input type="submit" value="  SEND  ">
+                </form>
+          </div>
+          <div id ="print">
+           	<h3> Print Application</h3>        
+                <p>To apply by fax, download, print, and send the application to your account manager 
+                        Dave Mos for immediate review.
+                </p>
+                <br> <br> <br> <br>
+                <form action="http://equipmentleasing.org/taycor-financial/apply-print" method="post">
+                	<input type="submit" value="DOWNLOAD"/>
+                </form>
+        </div>
+               <div id ="apply">
+               <h3> Apply By Phone </h3>         
+                    <p> Enter your name, phone number, and extention to have your dedicated lease professional call you now. 
+                    </p>
+                    <form action="http://equipmentleasing.org/taycor-financial/apply" method="post">
+                 		<input type="text" name="inpCallName" size="28"  placeholder="YOUR NAME"/>
+                        <br>
+                        <input type="text" name="inpCallPhone" size="28"  placeholder="YOUR PHONE NUMBER"/>
+                        <br>
+                        <br>
+                    <input type="submit" value="  CALL  ">
+                    </form>
+                    </div>
+            </div>
+    	
+  </div>
+    
+	<div id=ui_finhub_thr>
+    	<div class=ui_interior>
+            <div id=ui_finuhb_left>
+				<h3>Apply with Three Easy Steps:</h3>
+				<hr />
+				<h3>
+					<span class="popout-number"><span class="popout-number-inner">1</span></span>
+					Apply
+				</h3>
+				<p>It's easy to get started. Complete a simple, no obligation online application.</p>
+				<h3>
+					<span class="popout-number"><span class="popout-number-inner">2</span></span>
+					Review	
+				</h3>
+				<p>A dedicated transaction coodinator will be assigned to personally review your application.</p>
+				<h3>
+					<span class="popout-number"><span class="popout-number-inner">3</span></span>
+					Approval
+				</h3>
+				<p>Upon approval and receipt of documentation we work just like a check book. It's that easy. </p>
+				
+			</div>
+            <div id=ui_finuhb_right>
+				<h3>Ownership Information</h3>
+				<hr />
+				<form action="https://www.equipmentleasing.org/taycor-financial/apply-2" method="post" >
+				
+					<div class="divOfficerFormSets">
+						<div class="divOfficerFormSet">
+							<div class="formPanelLeft">														   
+								<label for="inpAppCompanyName"><span class="outer">*Officer Name:</span></label>
+								<input class="inpSoft" tabindex="100" type="text" id="inpAppOffName[]" name="inpAppOffName[]"  value="">
+								<br>
+								<label for="inpAppCity"><span class="outer">Email Address:</span></label>
+								<input class="inpSoft" tabindex="110" type="text" id="inpAppOffEmail[]" name="inpAppOffEmail[]"value="">
+								<br>
+								<label for="inpAppBusinessPhone"><span class="outer">Home Address:</span></label>
+								<input class="inpSoft" tabindex="120" type="text" id="inpAppOffAddr[]" name="inpAppOffAddr[]" value="">
+							</div>
+							<div class="formPanelRight">
+								<label for="inpAppTitle"><span class="outer">Title:</span></label>
+								<input class="inpSoft" tabindex="101" type="text" id="inpAppOffTitle[]" name="inpAppOffTitle[]"  value="">
+								<br>
+								<div class="clear">
+								</div>
+								<div class="split left">
+									<label for="inpAppState"><span class="outer">Ownership:</span></label>
+									<input class="inpSoft" tabindex="111" type="text" id="inpAppOffOwnership[]" name="inpAppOffOwnership[]" value="">
+									<br>
+								</div>
+								<div class="split right">
+									<label for="inpAppZip"><span class="outer">Social Security # :</span></label>
+									<input class="inpSoft" tabindex="112" type="text" id="inpAppOffSSN[]" name="inpAppOffSSN[]" value="">
+								<br>
+								</div>
+								
+								<div class="split left">
+								<label for="inpAppState"><span class="outer">State:</span></label>
+								<input class="inpSoft" tabindex="111" type="text" id="inpAppOffState[]" name="inpAppOffState[]" value="">
+								<br>
+								</div>
+								<br>
+								<div class="split right">
+									<label for="inpAppZip"><span class="outer">Zip:</span></label>
+									<input class="inpSoft" tabindex="112" type="text" id="inpAppOffZip[]" name="inpAppOffZip[]"  value="">
+									<br>
+								</div>
+								
+								<div class="clear">
+								</div>
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+					</div>
+			
+					<!--  dotted line -->
+					<div class="hrule"></div>
+					
+					<span class="form-note">Please provide for all person(s) with 20% or more ownership.</span>
+					
+					<!--  Add Officer BUTTON -->
+					<input type="button" value="Add Officer" class="addofficer" style=" margin: 11px; position: relative; left: 6.5em;" tabindex="499">
+					
+					<!--  script for the button -->
+					<script type="text/javascript">
+							$("input[type='button'].addofficer").click(function (){
+								if($(".divOfficerFormSetClone").length >= 3){
+									$(".addofficer").fadeOut();
+								}
+								if($(".divOfficerFormSetClone").length > 3){
+									return;
+								}
+								
+								var nth = "";
+								switch($(".divOfficerFormSetClone").length){
+									case 1:
+										nth = "Third ";
+										break;
+									case 2:
+										nth = "Fourth ";
+										break;
+									case 3:
+										nth = "Fifth ";
+										break;
+									default:
+										nth = "Second ";
+										break;
+								}
+								
+								$(".divOfficerFormSet")
+									.clone()
+									.removeClass("divOfficerFormSet")
+									.addClass("divOfficerFormSetClone")
+									.css("display", "none")
+									.appendTo(".divOfficerFormSets")
+									.fadeIn()
+									.find("input").val("").each(function (){
+										var oldTab = parseInt($(this).attr("tabindex"));
+										$(this).attr("tabindex", oldTab+40*(1+$(".divOfficerFormSetClone").length))
+									}).end()
+									.find("label[for='inpAppOffName[]'] span.outer").text(nth+'Officer Name:').removeClass("invalid");
+							});
+					</script>
+					
+					<!--  Bank Reference Pannel -->
+					<h3 style="  font-size: 18pt;margin: 1em 0;">
+					Bank Reference 
+					</h3>
+					<div class="formPanelLeft">														   
+						<label for="inpAppCompanyName"><span class="outer">Bank Name:</span></label>
+						<input class="inpSoft" tabindex="100" type="text" id="inpAppBankName" name="inpAppBankName" value="">
+						<br>
+						<label for="inpAppCity"><span class="outer">Account # :</span></label>
+						<input class="inpSoft" tabindex="110" type="text" id="inpAppBankAccount" name="inpAppBankAccount" value="">
+					</div>
+					<div class="formPanelRight">
+						<label for="inpAppTitle"><span class="outer">Bank Phone:</span></label>
+						<input class="inpSoft" tabindex="101" type="text" id="inpAppBankPhone" name="inpAppBankPhone" value="">
+						<br>
+						<label for="inpAppTitle"><span class="outer">Account Type:</span></label>
+						<input class="inpSoft" tabindex="101" type="text" id="inpAppBankAccType" name="inpAppBankAccType" value="">
+						<br>
+						<div class="clear">
+						</div>
+					</div>
+					
+					<!--  dotted line 2 -->
+					<div class="hrule2"></div>
+					
+					<!--  Authorization Pannel -->
+					<h3 style="  font-size: 18pt;margin: 1em 0;">
+					Authorization 
+					</h3>
+					<p> Signature authorizes Taycor Financial, Taycor Financial, and its assignees to verify credit and financial information from all appropriate sources. Such verification may include obtaining business as well as individual credit and financial background of officers and principals, as well as bank, trade, and comparable borrowing references. Submission of this form is consent that information transmitted via the Internet carries with it inherent risk when done via an unsecured network connection. Signature below must be done by only an authorized member and must be 18 years of age or older </p>
+					<div class="formPanelLeft">														   
+						<label for="inpAppCompanyName"><span class="outer">*Authorized Signer:</span></label>
+						<input class="inpSoft" tabindex="100" type="text" id="inpAppSigner" name="inpAppSigner" value="">
+					</div>
+					<div class="formPanelRight">
+						<label for="inpAppTitle"><span class="outer">*Title:</span></label>
+						<input class="inpSoft" tabindex="101" type="text" id="inpAppSignerTitle" name="inpAppSignerTitle" value="">
+						<br>
+						<div class="clear">
+					
+						</div>
+					</div>
+					
+					<!--  dotted line 3 -->
+					<div class="hrule3"></div>
+					<div class="form-note">Please complete all fields with an asterisk (*)
+					</div>
+					<!--  Submit Button -->
+					<input type="hidden" name="inpOnlineApplicationTwo" value="true">
+					<input type="submit" value="Submit" class="next" style="float: right;margin: 11px;" tabindex="700">
+					
+					<!--  NEXT BUTTON -->
+			
+					
+				</form>
+			</div>
+        </div>
+    </div>
+<div id="ui_foter">
+    <div class=ui_interior>
+		<img src="images/FOOTER.png" style="
+    position: relative;
+    top: -2px;
+">	
+	</div>
+</div>    
+</div>
+
+
+</body>
+
+</html>

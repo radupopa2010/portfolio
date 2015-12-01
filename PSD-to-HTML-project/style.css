@@ -1,0 +1,310 @@
+dhgfahsdgahgdsajdsgajd{{{{{{{{}}}}}}}}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+h3{font-size:18pt;margin-bottom: 1em;}
+input{  box-sizing: border-box;
+  width: 15em;
+  padding: 0.6em 0.6em 0.45em;
+  font-size: 11pt;
+  border-radius: 0.5em;
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+input[type="button"],
+input[type="submit"] {
+  background: #000;
+  color: #FFF;
+  cursor: pointer;
+}
+
+label{  display: block;
+  margin-bottom: 0.375em;
+  font-size: 16pt;}
+
+
+hr{  margin-bottom: 2em;}
+p{  margin-bottom: 2em;}
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body{
+	margin: 0;
+	min-width: 1161px;
+	font-family: 'Open Sans', sans-serif;
+	  font-size: 13pt;
+	  line-height: 1.25em;
+	}
+
+	
+#ui_finhub_one_picture{
+	background: #f6eed3;
+	position: relative;
+	z-index: 1;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	}
+	
+#ui_finhub_two{
+	backgrund: white;
+	height: 21.68em;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	}
+.ui_interior {
+	width: 72.3em;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 1.5px;
+	position: relative;
+}
+
+
+#budget, #print, #apply {
+	width: 33.3%;
+	float: left;
+	padding: 2.25em 1.75em;
+	box-sizing: border-box;
+	  position: relative;
+}
+
+
+#budget input[type="submit"], #print input[type="submit"], #apply input[type="submit"] {
+  background: #000;
+  color: #FFF;
+  position: absolute;
+  left: 2em;
+  top: 20em;
+  width: 7.5em;
+}
+	
+
+#ui_finhub_thr{
+	background: #1b2336;
+	color: white;
+}	
+	
+#finhub_one{
+	left-margin:auto;
+	right-margin:auto;
+	z-index:1;
+	}
+#header {
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(images/head1px.gif);
+	background-repeat: repeat-x;
+	height: 75px;
+	width: 100%;
+}
+#head_img_left {
+	float: left;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#header_img_right {
+	float: right;
+	z-index: 1;
+}
+#ui_finhub_one {
+	background-color: #f6eed3;
+}
+	
+#ui_foter{
+	background-image: url(images/FOOT-1PX.png);
+	background-repeat: repeat-x;
+	height: 1235px;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	left: auto;
+	right: auto;
+	display: block;
+	}
+#footer_1px {
+	margin-right:auto;
+	margin-left:auto;
+	position:relative;
+	z-index:1;
+}
+#footer_img {
+	position: relative;
+	z-index: auto;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	clear: both;
+	display: block;
+	text-align: center;
+	margin: auto;
+	width: auto;
+	height: auto;
+}
+
+#ui_finuhb_left{
+  right: 66.7%;
+  left: 0;
+  position: absolute;
+}
+#ui_finuhb_right,
+#ui_finuhb_left{
+  top: 0;
+  box-sizing: border-box;
+  padding: 4em 1.25em;
+}
+#ui_finuhb_right{
+  position: relative;
+  left: 33.3%;
+  right: 0;
+  width: 66.7%;
+}
+#ui_finuhb_right hr{
+  margin: 1em 3.1em 1em 0;
+  clear: both;
+}
+
+.divOfficerFormSetClone{
+	padding-top: 1em;
+}
+.container{
+	margin:0px auto;	
+}
+
+.clear{clear: both;}
+
+.popout-number {  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  float: left;
+  display: inline-block;
+  margin: 1px 6px 10px 10px;
+  height: 1.1em;
+  width: 1.1em;
+  border: 2pt solid #FFF;
+  border-radius: 1em;
+  -moz-border-radius: 12px;
+  position: relative;
+  top: -2px;
+  left: -6px;
+  font-size: 0.8em;
+}
+
+.formPanelLeft, .formPanelRight{
+  float: left;
+  width: 49%;	
+}
+.formPanelLeft input[type="text"], .formPanelRight input[type="text"]{
+	box-sizing: border-box;
+	width: 98%;
+}
+
+.split{
+	width: 49%;
+}
+.split.left{
+	float: left;
+}
+.split.right {
+  float: right;
+  position: relative;
+  left: -0.2em;
+}
+
+input.next {
+  background: #ffdd6c;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 6em;
+  font-size: 1.2em;
+  padding: 0.25em 0 0.125em;	
+  
+}
+
+input.addofficer {
+  background: #97cc3c;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 7.5em;
+  font-size: 1.2em;
+  padding: 0.25em 0 0.125em;	
+  
+}
+
+.hrule {
+  border-top: 1px dashed white;
+  margin: 16px;
+  clear:both;
+}
+.hrule2{
+   border-top: 1px dashed white;
+  margin-top: 11.5em;
+}
+.hrule3{
+   border-top: 1px dashed white;
+  margin-top: 7.5em;
+  margin-bottom:1em;
+}
