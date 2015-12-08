@@ -1,1 +1,1 @@
-### Project target: collect some data for special marketing campaign. 
+### Project target: parse previously scraped data to an specified outcome. 
