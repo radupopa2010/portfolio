@@ -6,6 +6,7 @@
 * Display the data to an user friendly interface.
 
 ###### Used [meteor](https://www.meteor.com/) framework to develop this project
+![alt tag]()
 
 #### Marketing View
 ![alt tag](https://github.com/radupopa2010/portfolio/blob/master/marketing-dashboard/sampleData1.PNG)
