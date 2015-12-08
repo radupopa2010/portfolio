@@ -8,8 +8,8 @@ mdata = mongodb.markdata
 
 # Connect to Postgresql DB
 import pg8000
-dbc = pg8000.connect(user="someUser", password="samplePasswod", 
-                     host="marketing-vm", port=5432, database = 'marketing')
+dbc = pg8000.connect(user="", password="", 
+                     host="", port=5432, database = '')
 db = dbc.cursor()
 
 # Make a list of dictionaries with the marketing days with 
@@ -18,11 +18,11 @@ db = dbc.cursor()
 #     get a list of marketing days from Postgresql
 print(time.ctime(),'Obtaining data from Postgres with  "_id", "mark_attempted" and "money_spent" ')
 db.execute(''' 
-                SELECT date(matt_datetime)::text as _id, 
-                        count(matt_attemptid)::integer as mark_attempted
+                SELECT date(sample_col_1)::text as _id, 
+                        count(sample_col_2)::integer as mark_attempted
                 FROM mark_attempts
-                GROUP BY date(matt_datetime)
-                ORDER BY date(matt_datetime) ASC
+                GROUP BY date(sample_col_1)
+                ORDER BY date(sample_col_1) ASC
             ''')
 rawMarkDays = db.fetchall()
 
@@ -43,12 +43,12 @@ for eaDate in rawMarkDays:
 #   get a list from Postgresql with '_id' and 'mark_success'
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "mark_success" ')
 db.execute(''' 
-            SELECT date(matt_datetime)::text as _id, 
-                   count(matt_attemptid)::integer as mark_success
+            SELECT date(sample_col_1)::text as _id, 
+                   count(sample_col_2)::integer as mark_success
             FROM mark_attempts
             WHERE matt_outcome = 'OK'
-            GROUP BY date(matt_datetime)
-            ORDER BY date(matt_datetime) ASC
+            GROUP BY date(sample_col_1)
+            ORDER BY date(sample_col_1) ASC
            ''')
 rawMarkDays = db.fetchall()
   
@@ -101,12 +101,12 @@ JoinLists(markDays,tempList)
 
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "mark_leads" ')
 db.execute(''' 
-            SELECT  date(matt_datetime)::text as _id, 
+            SELECT  date(sample_col_1)::text as _id, 
                     count(mres_companyid)::integer as mark_leads
             FROM v_marketing_response_source
             WHERE mres_type = 'lead'
-            GROUP BY date(matt_datetime)
-            ORDER BY date(matt_datetime) ASC
+            GROUP BY date(sample_col_1)
+            ORDER BY date(sample_col_1) ASC
            ''')
 rawMarkDays = db.fetchall()
 #    transform the list obtained from Postgresql to a list of dictionaries
@@ -125,13 +125,13 @@ JoinLists(markDays,tempList)
 
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "mark_removes" ')
 db.execute(''' 
-            SELECT  date(matt_datetime)::text as _id, 
+            SELECT  date(sample_col_1)::text as _id, 
                     count(mres_responseid)::integer as mark_removes
             FROM v_marketing_response_source
             WHERE mres_type = 'remove' 
             OR    mres_type = 'reremove' 
-            GROUP BY date(matt_datetime)
-            ORDER BY date(matt_datetime) ASC
+            GROUP BY date(sample_col_1)
+            ORDER BY date(sample_col_1) ASC
            ''')
 rawMarkDays = db.fetchall()
 #    transform the list obtained from Postgresql to a list of dictionaries
@@ -154,11 +154,11 @@ JoinLists(markDays,tempList)
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "users": leads_given ')
 
 db.execute('''
-			SELECT date(matt_datetime)::text AS matt_datetime, user_firstname,
+			SELECT date(sample_col_1)::text AS sample_col_1, user_firstname,
 			count(user_userid)::integer AS leads_given
 			FROM v_mongo_user_leads
-			GROUP BY matt_datetime, user_firstname
-			ORDER BY matt_datetime ASC			
+			GROUP BY sample_col_1, user_firstname
+			ORDER BY sample_col_1 ASC			
 			''')
 qresult = db.fetchall()
 
@@ -205,7 +205,7 @@ db.execute('''
 		   FROM ( SELECT a.matt_date,
 					company.comp_primaryuserid,
 					count(a.coev_companyid) AS appcount
-				   FROM ( SELECT DISTINCT date(v_marketing_compevent_app_source.matt_datetime) AS matt_date,
+				   FROM ( SELECT DISTINCT date(v_marketing_compevent_app_source.sample_col_1) AS matt_date,
 							v_marketing_compevent_app_source.coev_companyid
 						   FROM v_marketing_compevent_app_source) a
 					 JOIN company ON company.comp_companyid::text = a.coev_companyid::text
@@ -258,7 +258,7 @@ db.execute('''
 				from (
 					-- Unique groups of 'lead' marketing responses by attempt date/company
 					--	where the response has a condition to be qualified as 'stalledlead'
-					select distinct date(matt_datetime) as matt_date, matt_companyid
+					select distinct date(sample_col_1) as matt_date, matt_companyid
 					from v_marketing_response_source as vmrs_outer
 					join company on comp_companyid = matt_companyid
 					where mres_type = 'lead' AND (
@@ -274,8 +274,8 @@ db.execute('''
 				join company on comp_companyid = matt_companyid
 				where not exists(
 					-- A transaction associated to this marketing attempt
-					select matt_attemptid from v_marketing_transaction_source as vmts
-					where vmts.matt_datetime = foo.matt_date
+					select sample_col_2 from v_marketing_transaction_source as vmts
+					where vmts.sample_col_1 = foo.matt_date
 						and vmts.matt_companyid = foo.matt_companyid
 				)
 				group by matt_date, comp_primaryuserid
@@ -320,16 +320,16 @@ JoinLists(markDays,tempList)
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "users": transactions_created ')
 
 db.execute('''
-		select date(vmts_distinct.matt_datetime)::text as matt_datetime, user_firstname, count(*)::integer
+		select date(vmts_distinct.sample_col_1)::text as sample_col_1, user_firstname, count(*)::integer
 		from (
 			select distinct
-				matt_datetime, oppo_opportunityid, oppo_primarycompanyid
+				sample_col_1, oppo_opportunityid, oppo_primarycompanyid
 			from v_marketing_transaction_source
 		) as vmts_distinct
 		join v_mongo_companyid_to_user_firstname as vmctuf
 			on vmts_distinct.oppo_primarycompanyid = vmctuf.comp_companyid
-		group by date(vmts_distinct.matt_datetime), user_firstname
-		order by matt_datetime
+		group by date(vmts_distinct.sample_col_1), user_firstname
+		order by sample_col_1
 			''')
 transactions_created_result = db.fetchall()
 
@@ -368,11 +368,11 @@ JoinLists(markDays,tempList)
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "users": transactions_funded and transactions_margin ')
 
 db.execute('''
-			select date(vmts_distinct.matt_datetime)::text as matt_datetime, user_firstname, 
+			select date(vmts_distinct.sample_col_1)::text as sample_col_1, user_firstname, 
 					count(*)::integer, sum("oppo_fund_expCommission")::integer
 			from (
 				select distinct
-					matt_datetime, oppo_opportunityid, 
+					sample_col_1, oppo_opportunityid, 
 					oppo_primarycompanyid, "oppo_fund_expCommission"
 				from v_marketing_transaction_source
 				where "oppo_fund_expCommission" is not null 
@@ -380,8 +380,8 @@ db.execute('''
 			) as vmts_distinct
 			join v_mongo_companyid_to_user_firstname as vmctuf
 				on vmts_distinct.oppo_primarycompanyid = vmctuf.comp_companyid
-			group by date(vmts_distinct.matt_datetime), user_firstname
-			order by matt_datetime
+			group by date(vmts_distinct.sample_col_1), user_firstname
+			order by sample_col_1
 			''')
 transactions_funded_margin_result = db.fetchall()
 
@@ -422,10 +422,10 @@ JoinLists(markDays,tempList)
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "users": transactions_pending ')
 
 db.execute('''
-			select date(vmts_distinct.matt_datetime)::text as matt_datetime, user_firstname, count(*)::integer
+			select date(vmts_distinct.sample_col_1)::text as sample_col_1, user_firstname, count(*)::integer
 			from (
 				select distinct
-					matt_datetime, oppo_opportunityid, oppo_primarycompanyid
+					sample_col_1, oppo_opportunityid, oppo_primarycompanyid
 				from v_marketing_transaction_source
 				where oppo_status != 'stalled' 
 				and oppo_status != 'declined' 
@@ -436,8 +436,8 @@ db.execute('''
 			) as vmts_distinct
 			join v_mongo_companyid_to_user_firstname as vmctuf
 				on vmts_distinct.oppo_primarycompanyid = vmctuf.comp_companyid
-			group by date(vmts_distinct.matt_datetime), user_firstname
-			order by matt_datetime
+			group by date(vmts_distinct.sample_col_1), user_firstname
+			order by sample_col_1
 			''')
 transactions_pending_result = db.fetchall()
 
@@ -476,17 +476,17 @@ JoinLists(markDays,tempList)
 print(time.ctime(),'Obtaining data from Postgres with "_id" and "users": transactions_stalled ')
 
 db.execute('''
-			select date(vmts_distinct.matt_datetime)::text as matt_datetime, user_firstname, count(*)::integer
+			select date(vmts_distinct.sample_col_1)::text as sample_col_1, user_firstname, count(*)::integer
 			from (
 				select distinct
-					matt_datetime, oppo_opportunityid, oppo_primarycompanyid
+					sample_col_1, oppo_opportunityid, oppo_primarycompanyid
 				from v_marketing_transaction_source
 				where oppo_status = 'stalled'
 			) as vmts_distinct
 			join v_mongo_companyid_to_user_firstname as vmctuf
 				on vmts_distinct.oppo_primarycompanyid = vmctuf.comp_companyid
-			group by date(vmts_distinct.matt_datetime), user_firstname
-			order by matt_datetime
+			group by date(vmts_distinct.sample_col_1), user_firstname
+			order by sample_col_1
 			''')
 transactions_stalled_result = db.fetchall()
 
@@ -525,16 +525,16 @@ print(time.ctime(),'Obtaining data from Postgres with "_id" and "users": transac
 		\n that will be used for computing leads-stalled ' )
 
 db.execute('''
-			select date(vmts_distinct.matt_datetime)::text as matt_datetime, user_firstname, count(*)::integer
+			select date(vmts_distinct.sample_col_1)::text as sample_col_1, user_firstname, count(*)::integer
 			from (
 				select distinct
-					matt_datetime, oppo_primarycompanyid
+					sample_col_1, oppo_primarycompanyid
 				from v_marketing_transaction_source
 			) as vmts_distinct
 			join v_mongo_companyid_to_user_firstname as vmctuf
 				on vmts_distinct.oppo_primarycompanyid = vmctuf.comp_companyid
-			group by date(vmts_distinct.matt_datetime), user_firstname
-			order by matt_datetime
+			group by date(vmts_distinct.sample_col_1), user_firstname
+			order by sample_col_1
 			''')
 transactions_ucompanies_result = db.fetchall()
 
