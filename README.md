@@ -11,4 +11,4 @@
 ## Full stack Related Projects:
 * [Build a summary](https://github.com/radupopa2010/portfolio/tree/master/marketing-dashboard) view for marketing ROI (Return Of Investment).
 * Build a new Sales Application to improve  the productivity. (Currently under development). 
-* * Using [Meteor framework](https://www.meteor.com/) and [Polymer web components](https://www.polymer-project.org/1.0/). 
+** Using [Meteor framework](https://www.meteor.com/) and [Polymer web components](https://www.polymer-project.org/1.0/). 
