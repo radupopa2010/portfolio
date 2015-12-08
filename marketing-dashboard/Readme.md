@@ -5,4 +5,5 @@
 * Write SQL to manipulate data to show the requested outcome. 
 * Display the data to an user friendly interface.
 
-[Marketing View](https://github.com/radupopa2010/portfolio/blob/master/marketing-dashboard/sampleData1.PNG)
+Marketing View
+![alt tag](https://github.com/radupopa2010/portfolio/blob/master/marketing-dashboard/sampleData1.PNG)
