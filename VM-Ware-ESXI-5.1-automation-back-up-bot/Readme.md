@@ -1,5 +1,5 @@
 
-### Find an open source solution to do live back-up an VMWare ESXi 5.1 server.
+### Find an open source solution to do a live back-up on an VMWare ESXi 5.1 server.
 
 ###### This project was also my final project for my AP Degree. 
 
