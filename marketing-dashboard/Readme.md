@@ -8,5 +8,5 @@
 ###### Used [meteor](https://www.meteor.com/) framework to develop this project
 ![alt tag](https://github.com/radupopa2010/portfolio/blob/master/marketing-dashboard/meteor.PNG)
 
-#### Marketing View
+## Marketing View
 ![alt tag](https://github.com/radupopa2010/portfolio/blob/master/marketing-dashboard/sampleData1.PNG)
