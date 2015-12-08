@@ -3,6 +3,7 @@
 Found 2 solutions:
 
 1. Write an windows automation script in Python that simulates the work of a human doing a "manual back-up":
+
 * select the target Virtual machine;
 * take a snapshot;
 * move the folder containing the virtual machine on another data storage hard drive.
