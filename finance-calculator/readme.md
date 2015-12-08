@@ -1,6 +1,6 @@
 # Custom "finance calculator"
 
-### Ment to be used as part of our internal CRM , but it can run as stand alone 
+### Designed to be used as part of our internal CRM , but it can run as stand alone 
 
 The purpos of this repository is ment to be used as part of my portfolio.
 
