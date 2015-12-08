@@ -1,6 +1,6 @@
 # Convert design to HTML
 
-The purpos of this repository is ment to be used as part of my portfolio.
+The purpose of this repository is to be used as part of my portfolio.
 
 ### [Link to the real web page.](http://shopezit.com/leasing.html/) 
 
