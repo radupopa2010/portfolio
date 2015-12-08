@@ -9,3 +9,4 @@
 * [Find an open source solution](https://github.com/radupopa2010/portfolio/tree/master/VM-Ware-ESXI-5.1-automation-back-up-bot) to do a live back-up on an VMWare ESXi 5.1 server.
 
 ## Full stack Related Projects:
+* [Build a summary](https://github.com/radupopa2010/portfolio/tree/master/marketing-dashboard) view for marketing ROI (Return Of Investment).
