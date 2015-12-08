@@ -10,18 +10,11 @@ objective:
 	load crm table data into the marketing database
 """
 import os, sys, time
-CONF_INPATH = os.path.abspath('../../data/crm-tables/pending/')
-move_path = os.path.abspath('../../data/crm-tables/processed/')
+CONF_INPATH = os.path.abspath('../../fodler1/fodler2/pending/')
+move_path = os.path.abspath('../../fodler1/fodler2/processed/')
 CONF_TABLES = (
 #	('crm-table-name', 'crm-column-names')
- 	('company', 'comp_companyid, comp_name, comp_primaryuserid ,comp_nextcalldate, comp_status,comp_duns')
- ,	('comp_events', 'coev_companyid, coev_timestamp, coev_oldstatus, coev_newstatus')
- ,	('person', 'pers_personid, pers_emailaddress, pers_companyid')
- ,	('phone', 'phon_phoneid, phon_fullnumber, phon_companyid, phon_type')
- ,	('opportunity', 'oppo_opportunityid, oppo_primarycompanyid, oppo_createddate, \
-		oppo_fund_expDate, oppo_fund_expCommission, oppo_status, oppo_assigneduserid, \
-		oppo_doc_totalamt_withtax, oppo_approval_lender, oppo_customlendername \
-		')
+ 	('table1', 'col1, col2, col3 ,col4, col5,col6')
  ,	('users', 'user_userid, user_firstname, user_lastname')
  # ,	('dnb_results', 'dres_datetime, dres_companyid, dres_html, dres_json')
  ,
@@ -46,9 +39,9 @@ def main():
 	dbc = pg8000.connect(
 		user="someUser"
 		, password="somePassword"
-		, host="marketing-vm"
+		, host=""
 		, port=5432
-		, database="marketing"
+		, database=""
 	)
 	dbc.autocommit = True	
 	db = dbc.cursor()
@@ -102,7 +95,7 @@ def main():
 	print(time.ctime(),'Removing extra spaces from company table')
 	db.execute(''' 
 	update company 
-	set comp_status = rtrim(comp_status)
+	set col5 = rtrim(col5)
 	''')
 	print(time.ctime(),"Complete!")
 	sys.stdout.flush()

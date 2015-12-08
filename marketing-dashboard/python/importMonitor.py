@@ -13,9 +13,9 @@ print (time.ctime(),"Import monitor startup: ")
 sys.stdout.flush()
 base_path = os.path.abspath('../')
 # print(base_path)
-update_crm_tables = ''.join([base_path,'/data/crm-tables/pending'])
-import_insite_attempts = ''.join([base_path,'/data/insite-attempts/pending'])
-import_insite_responses = ''.join([base_path,'/data/insite-responses/pending'])
+update_crm_tables = ''.join([base_path,'/fodler1/fodler2/pending'])
+import_insite_attempts = ''.join([base_path,'/fodler1/insite-attempts/pending'])
+import_insite_responses = ''.join([base_path,'/fodler1/insite-responses/pending'])
 
 pythonScripts = ''.join([base_path,'/python/import'])
 exportToMongo = ''.join([base_path,'/python'])
@@ -35,7 +35,7 @@ def UploadsReadyCheck(filelist):
 def update_crm_company():
 	base_path = os.path.abspath('../')
 	pythonScripts = ''.join([base_path,'/python/import'])
-	update_crm_tables = ''.join([base_path,'/data/crm-tables/pending'])
+	update_crm_tables = ''.join([base_path,'/fodler1/fodler2/pending'])
 	uct_shouldExecute = [update_crm_tables+'/'+l for l in os.listdir(update_crm_tables)]
 	if uct_shouldExecute:
 		if not UploadsReadyCheck(uct_shouldExecute):

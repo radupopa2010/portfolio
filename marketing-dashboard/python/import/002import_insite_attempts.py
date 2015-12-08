@@ -13,24 +13,24 @@ pg8000.paramstyle = 'qmark'
 dbc = pg8000.connect(
 	user="otherUser"
 	, password="otherPassword"
-	, host="marketing-vm"
+	, host=""
 	, port=5432
-	, database="marketing"
+	, database=""
 )
 dbc.autocommit = True	
 db = dbc.cursor()
 startTime = time.time()
 # Get a list of available files
 import os
-CONF_DATAPATH = os.path.abspath('../../data/insite-attempts/pending')
-move_path = os.path.abspath('../../data/insite-attempts/processed')
+CONF_DATAPATH = os.path.abspath('../../folder1/folder2/pending')
+move_path = os.path.abspath('../../folder1/folder2/processed')
 lsDataFiles = [l for l in os.listdir(CONF_DATAPATH) if l.endswith('.db')]
 print(len(lsDataFiles),lsDataFiles)
 import sqlite3
 import csv
 # db.execute(''' 
-			# -- empty mark_attempts
-			# DELETE FROM mark_attempts
+			# -- empty sample_table
+			# DELETE FROM sample_table
 			# ''')
 # Define a move fuction to use later, after processing each db file
 import shutil
@@ -60,7 +60,7 @@ for dbFileName in lsDataFiles:
 		# Select all data from the database
 		cur.execute("""
 			select
-				comp_companyid as matt_companyid
+				col1 as matt_companyid
 				, txDate as matt_datetime
 				, txFaxResult as matt_outcome
 			from txlog join impcontacts on txFaxNum = faxnum
@@ -71,7 +71,7 @@ for dbFileName in lsDataFiles:
 		outputWriter.writerows(cur)
 		outputFile.close()
 		
-		# Import result file into the mark_attempts table
+		# Import result file into the sample_table table
 		print(time.ctime(),"Importing into mark_attepts")
 		sys.stdout.flush(
 		#	- Create a temporary table
@@ -90,7 +90,7 @@ for dbFileName in lsDataFiles:
 		''' % (csvTempPath, ))
 		#	- Migrate the data from the temporary table to the destination
 		db.execute('''
-			INSERT INTO mark_attempts
+			INSERT INTO sample_table
 				(matt_companyid, matt_datetime, matt_outcome)
 			SELECT
 				temp_companyid as matt_companyid
@@ -136,7 +136,7 @@ limit = 0
 for eaRow in sourceFile:
 	comg_mergefrom, comg_mergeto, junk = eaRow.split('\t')
 	db.execute(''' 
-			update mark_attempts
+			update sample_table
 			set matt_companyid = '%s'
 			where matt_companyid = '%s'
 			''' %(comg_mergefrom, comg_mergeto))
@@ -147,7 +147,7 @@ print(time.ctime(),'Query ran for:' + str(time.time()- sratUpCompId))
 print(time.ctime(),'Deleting duplicates now')
 startDeleteDup = time.time()
 db.execute(''' 
-DELETE FROM mark_attempts 
+DELETE FROM sample_table 
 WHERE matt_attemptid IN (
 	SELECT matt_attemptid
 	FROM (
@@ -156,7 +156,7 @@ WHERE matt_attemptid IN (
 			matt_datetime, 
 			matt_outcome 
 		ORDER BY matt_attemptid) AS rnum
-		FROM mark_attempts
+		FROM sample_table
 	) t
 	WHERE t.rnum > 1
 );''')
@@ -165,13 +165,13 @@ dbc.commit()
 print(time.ctime(),'Delete duplicate query run for:', time.time()- startDeleteDup)
 # Delete all the records that have no datetime
 print(time.ctime(),'Deleting rows that have no datetime')
-db.execute("""  delete from mark_attempts where matt_datetime is null  """)
+db.execute("""  delete from sample_table where matt_datetime is null  """)
 dbc.commit()
 
 # Convert matt_datetime to timestamp
 try:
 	db.execute(''' 
-				ALTER TABLE mark_attempts 
+				ALTER TABLE sample_table 
 				ALTER COLUMN matt_datetime TYPE timestamp
 				USING to_timestamp(matt_datetime, 'YYYY-MM-DD');
 				''')
