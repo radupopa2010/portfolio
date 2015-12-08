@@ -5,3 +5,4 @@
 
 ## Backed End Related Projects:
 * [Parse web-scrpaed data](https://github.com/radupopa2010/portfolio/tree/master/parse-scraped-data-nab-15) to a desired output.
+* [Scrape a target webstie](https://github.com/radupopa2010/portfolio/tree/master/scrape-with-selenium-npe15) with dynamic loading content.
