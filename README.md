@@ -1,5 +1,5 @@
 ## Welcome to the summary view of some of the projects I was involved in.
-##### NOTE: Some parts of the code I wrote were reviwed and improoved by my supervisor.
+##### NOTE: Some parts of the code I wrote were reviewed and improved by my supervisor.
 ###### Please follow the links for each project to see more details.
 ##  Front End Related Projects:
 * Build a [_"Finance Calculator"_](https://github.com/radupopa2010/portfolio/tree/master/finance-calculator) plug-in for existing CRM using HTML, CSS and JavaScript.
