@@ -14,7 +14,6 @@ capturing detail from lead processing logs
 
 import os, re, pprint, sys, time
 startExecTime = time.time()
-# PATH_BASE = r'\\crmserver\gpopa\log-parse\logs'+'\\'
 # Run from markening-vm
 
 # Define a move fuction to use later, after processing each log file
@@ -26,8 +25,8 @@ def move(src, dest):
 		dest = '%s_%s' % (dest, uuid.uuid4())
 		shutil.move(src, dest)
 		
-PATH_BASE = os.path.abspath('../../data/insite-responses/pending')
-move_path =  os.path.abspath('../../data/insite-responses/processed')
+PATH_BASE = os.path.abspath('../../folder1/folder2/pending')
+move_path =  os.path.abspath('../../folder1/folder2/processed')
 startLog = time.time()
 # create a dictionary with exceptions
 countErrors = {'no-company': 0, 'no-type': 0}
@@ -344,9 +343,9 @@ for eaType in countPasses:
 			if compId == 205223216162: continue
 			if not compId: compId = 'None'
 		#
-#		newrow = {'mres_companyid':compId,
-#				  'mres_datetime':eaValue[1],
-#				  'mres_type': eaType,
+#		newrow = {'sample_col_1':compId,
+#				  'sample_col_4':eaValue[1],
+#				  'sample_col_5': eaType,
 #				  'mres_personid':personId}
 		outputWriter = csv.writer(outputFile ,delimiter='\t')
 		outputWriter.writerow([compId,personId,eaValue[1],eaType])
@@ -367,7 +366,7 @@ db = dbc.cursor()
 
 
 # Import the CSV file to the database
-print(time.ctime(),"Importing into mark_responses")
+print(time.ctime(),"Importing into sample_table_1")
 sys.stdout.flush()
 csvSource = pathTempCSV
 try:
@@ -379,10 +378,10 @@ db.execute('''
 			-- create temp_table
 			CREATE TABLE temp_table
 			(
-			mres_companyid varchar(255),
+			sample_col_1 varchar(255),
 			mres_personid varchar(255),
-			mres_datetime varchar(255),
-			mres_type varchar(255)
+			sample_col_4 varchar(255),
+			sample_col_5 varchar(255)
 			);
 			''')
 db.execute('''	
@@ -393,9 +392,9 @@ db.execute('''
 		''' %(csvSource))
 db.execute('''
 			-- insert data from the temp_table into mark_attempts
-			INSERT INTO  mark_responses
-				(mres_companyid, mres_personid, mres_datetime, mres_type)
-			SELECT mres_companyid, mres_personid, NULLIF(NULLIF(mres_datetime, ''), 'None')::timestamp as mres_datetime, mres_type
+			INSERT INTO  sample_table_1
+				(sample_col_1, mres_personid, sample_col_4, sample_col_5)
+			SELECT sample_col_1, mres_personid, NULLIF(NULLIF(sample_col_4, ''), 'None')::timestamp as sample_col_4, sample_col_5
 				FROM temp_table				
 			''')
 db.execute('''
@@ -406,14 +405,14 @@ dbc.commit()
 
 
 
-# Update mres_companyid by referencing mres_personid from person table 
+# Update sample_col_1 by referencing mres_personid from person table 
 print(time.ctime(),'Start updating companyid based on personId')
 sys.stdout.flush()
 startUpdate = time.time()
 db.execute("""
-			update mark_responses
-			set mres_companyid = (
-			  select pers_companyid
+			update sample_table_1
+			set sample_col_1 = (
+			  select sample_col_2
 			  from person
 			  where pers_personid = mres_personid
 			)
@@ -428,15 +427,15 @@ dbc.commit()
 print(time.ctime(),'Deleting duplicates now')
 startDeleteDup = time.time()
 db.execute(''' 
-DELETE FROM mark_responses 
-WHERE mres_responseid IN (SELECT mres_responseid
-  FROM (SELECT mres_responseid,
+DELETE FROM sample_table_1 
+WHERE sample_col_3 IN (SELECT sample_col_3
+  FROM (SELECT sample_col_3,
 			   ROW_NUMBER() 
-				   OVER (partition BY  mres_companyid, 
-									   mres_datetime, 
-									   mres_type 
-									   ORDER BY mres_responseid) AS rnum
-		 FROM mark_responses) t
+				   OVER (partition BY  sample_col_1, 
+									   sample_col_4, 
+									   sample_col_5 
+									   ORDER BY sample_col_3) AS rnum
+		 FROM sample_table_1) t
   WHERE t.rnum > 1);
 			''')
 print(time.ctime(),'Delete duplicate query run for:', time.time()- startDeleteDup)
@@ -451,15 +450,15 @@ print(time.ctime(),'Updatating the existing companyid with the one that was merg
 import time
 sratUpCompId = time.time()
 import os
-basePath = os.path.abspath('../../data/crm-tables/')
+basePath = os.path.abspath('../../folder1/crm-tables/')
 sourceFile = open(basePath + '/' + 'comp_mergings')
 limit = 0
 for eaRow in sourceFile:
 	comg_mergefrom, comg_mergeto, junk = eaRow.split('\t')
 	db.execute(''' 
-			update mark_responses
-			set mres_companyid = '%s'
-			where mres_companyid = '%s'
+			update sample_table_1
+			set sample_col_1 = '%s'
+			where sample_col_1 = '%s'
 			''' %(comg_mergeto, comg_mergefrom, ))
 print(time.ctime(),'Rows affected: '+ str(db.rowcount))
 print(time.ctime(),'Query ran for:' + str(time.time()- sratUpCompId))
@@ -469,18 +468,18 @@ print(time.ctime(),'Query ran for:' + str(time.time()- sratUpCompId))
 # Clear any responses marked as 'hot leads' and re-assign values for the column
 print(time.ctime(),'Updating mres_ishotlead')
 db.execute('''
-update mark_responses set mres_ishotlead = false;
+update sample_table_1 set mres_ishotlead = false;
 			''')
 
 db.execute('''
-update mark_responses mres_outer set mres_ishotlead = true
+update sample_table_1 mres_outer set mres_ishotlead = true
 where not exists(
-	select mres_datetime from mark_responses as mres_inner
-	where mres_inner.mres_companyid = mres_outer.mres_companyid
-		and mres_inner.mres_datetime > mres_outer.mres_datetime
-		and mres_inner.mres_type	= 'lead'
+	select sample_col_4 from sample_table_1 as mres_inner
+	where mres_inner.sample_col_1 = mres_outer.sample_col_1
+		and mres_inner.sample_col_4 > mres_outer.sample_col_4
+		and mres_inner.sample_col_5	= 'lead'
 )
-and mres_type	= 'lead';
+and sample_col_5	= 'lead';
 		''')
 
 dbc.commit()
