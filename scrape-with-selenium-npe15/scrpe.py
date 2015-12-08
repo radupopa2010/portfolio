@@ -12,7 +12,6 @@ baseurl="http://npe15.mapyourshow.com/6_0/exhibitor/exhibitor-details.cfm?ExhID=
 
 #import a list of exhibitor IDs
 
-
 fh = open("npe-exh-id-list.txt", "r")
 id_list = fh.readlines()
 fh.close()
