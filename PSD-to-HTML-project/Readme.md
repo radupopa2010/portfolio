@@ -1,6 +1,7 @@
 # Convert design to HTML
 
-The purpose of this repository is to be used as part of my portfolio.
+Received a Photoshop mock-up from a partner designer and I had to write the code to convert it to a functional web page.
+Technologies used: HTML, CSS, JavaScript and jQuery.  
 
 ### [Link to the real web page.](http://shopezit.com/leasing.html/) 
 
